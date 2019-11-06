@@ -31,4 +31,18 @@
         android:text="this is second"
         android:textAllCaps="false"/>
 
+    <Button
+        android:id="@+id/third"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="this is third"
+        android:textAllCaps="false"/>
+
+    <TextView
+        android:id="@+id/ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ip"
+        android:textAllCaps="false"/>
+
 </LinearLayout>
