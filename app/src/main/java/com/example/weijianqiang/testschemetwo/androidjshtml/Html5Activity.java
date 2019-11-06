@@ -47,7 +47,8 @@ public class Html5Activity extends AppCompatActivity {
             }
         });
 
-        webView.loadUrl("file:///android_asset/test.html");
+        //webView.loadUrl("file:///android_asset/test.html");
+        webView.loadUrl("file:///android_asset/func.html");
         webView.addJavascriptInterface(new JavaScriptImpl(webView),"android");
 
         Button one = (Button) findViewById(R.id.test_one);

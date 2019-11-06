@@ -1,7 +1,11 @@
 package com.example.weijianqiang.testschemetwo;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +13,18 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity_bb";
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.d(TAG, "onServiceConnected: service:"+service);
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.d(TAG, "onServiceDisconnected: ");
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +70,27 @@ public class MainActivity extends AppCompatActivity {
 //                Intent intent = new Intent("com.iflytek.install_app");
 //                intent.putExtra("appPath","/sdcard/app_tvRelease_4.2.0_20191012.apk");
 //                startService(intent);
-                Intent intent = new Intent();
-                intent.setAction("com.iflytek.huawei");
-                sendBroadcast(intent);
+                Intent intent = new Intent("com.iflytek.xiri.remote.action.TELEPHONE");
+                bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
             }
         });
 
-
+        findViewById(R.id.second).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //startActivity(intent);
+//                SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日EEEE");
+//                tv1.setText(sdf.format(new Date()));
+//                Intent intent = new Intent("com.iflytek.install_app");
+//                intent.putExtra("appPath","/sdcard/app_tvRelease_4.2.0_20191012.apk");
+//                startService(intent);
+//                Intent intent = new Intent("com.iflytek.xiri.remote.action.TELEPHONE");
+                unbindService(serviceConnection);
+//                bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
+            }
+        });
 
     }
 }
