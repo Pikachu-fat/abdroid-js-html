@@ -1,8 +1,10 @@
-package com.example.weijianqiang.testschemetwo;
+package com.example.weijianqiang.testschemetwo.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.weijianqiang.testschemetwo.R;
 
 public class MinitypeActivity extends AppCompatActivity {
 

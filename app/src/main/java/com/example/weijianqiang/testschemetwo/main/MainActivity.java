@@ -1,4 +1,4 @@
-package com.example.weijianqiang.testschemetwo;
+package com.example.weijianqiang.testschemetwo.main;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.weijianqiang.testschemetwo.R;
 import com.example.weijianqiang.testschemetwo.nanohttpddemo.ClientServerHttpd;
 
 import java.io.File;

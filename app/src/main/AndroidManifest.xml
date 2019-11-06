@@ -30,14 +30,14 @@
             android:name="service"
             android:value="music" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MinitypeActivity">
+        <activity android:name=".main.MinitypeActivity">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -56,7 +56,7 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".SecondActivity"
+            android:name=".main.SecondActivity"
             android:exported="true">
 
             <!-- <intent-filter> -->
@@ -66,10 +66,10 @@
             <!-- <category android:name="android.intent.category.DEFAULT" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".ThirdActivity" />
+        <activity android:name=".main.ThirdActivity" />
 
         <receiver
-            android:name=".TestReceiver"
+            android:name=".main.TestReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.iflytek.abcd" />

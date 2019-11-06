@@ -1,4 +1,4 @@
-package com.example.weijianqiang.testschemetwo;
+package com.example.weijianqiang.testschemetwo.main;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
