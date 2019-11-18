@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 //                Intent intent = new Intent("com.iflytek.install_app");
 //                intent.putExtra("appPath","/sdcard/app_tvRelease_4.2.0_20191012.apk");
 //                startService(intent);
-                Intent intent = new Intent("com.iflytek.xiri.remote.action.TELEPHONE");
+                Intent intent = new Intent("com.iflytek.xiri.openplatform");
                 bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
             }
         });
@@ -98,8 +98,12 @@ public class MainActivity extends AppCompatActivity {
 //                intent.putExtra("appPath","/sdcard/app_tvRelease_4.2.0_20191012.apk");
 //                startService(intent);
 //                Intent intent = new Intent("com.iflytek.xiri.remote.action.TELEPHONE");
-                unbindService(serviceConnection);
+//                unbindService(serviceConnection);
+                //MediaPlayUtil.getInstance().startPlay("/sdcard/xmbase/data/xiriAudioFiles/voice#264350515#20191113151611.pcm");
+//                MediaPlayUtil.getInstance().startPlay("/sdcard/test/file_tenggeer_response_mg.pcm");
 //                bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
+                Intent intent = new Intent("com.iflytek.testxiri59");
+                startService(intent);
             }
         });
 

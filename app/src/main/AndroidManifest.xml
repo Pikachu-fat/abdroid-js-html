@@ -6,6 +6,10 @@
         android:name="com.iflytek.permission.INSTALLPERSION"
         android:protectionLevel="normal" />
 
+    <!--<permission android:name="com.iflytek.tvclient.test" android:protectionLevel="normal"/>-->
+
+    <uses-permission android:name="com.iflytek.tvclient.test_ifly12"/>
+
     <uses-permission android:name="com.iflytek.permission.INSTALLPERSION" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -84,5 +88,8 @@
             <!--</intent-filter>-->
         </activity>
     </application>
+
+
+
 
 </manifest>
