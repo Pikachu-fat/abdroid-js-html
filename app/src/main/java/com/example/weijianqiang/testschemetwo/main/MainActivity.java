@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // test
 
-
+// second test
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //startActivity(intent);
 //                SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日EEEE");
