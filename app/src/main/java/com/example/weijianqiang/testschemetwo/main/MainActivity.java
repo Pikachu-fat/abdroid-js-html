@@ -89,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                // test
+
+
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //startActivity(intent);
 //                SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日EEEE");
