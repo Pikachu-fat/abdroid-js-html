@@ -2,12 +2,16 @@ package com.example.weijianqiang.testschemetwo.main;
 
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.annotation.WorkerThread;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity_bb";
     private ArrayList<File> files = new ArrayList<>();
+    private Handler handler = null;
+    private Handler mainHandler = null;
     ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -73,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.first).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String test = null;
+                // 测试崩溃CrashHandler
+                //test.equals("test");
 //                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //startActivity(intent);
@@ -81,8 +90,40 @@ public class MainActivity extends AppCompatActivity {
 //                Intent intent = new Intent("com.iflytek.install_app");
 //                intent.putExtra("appPath","/sdcard/app_tvRelease_4.2.0_20191012.apk");
 //                startService(intent);
-                Intent intent = new Intent("com.iflytek.xiri.openplatform");
-                bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+//                Intent intent = new Intent("com.iflytek.xiri.openplatform");
+//                bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+
+
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        for (int i =0 ;i<1000;i++){
+//                            Log.d(TAG, "run: i+"+i);
+//                            XMContext.getContext().startService(new Intent("iflytek.test"));
+//                        }
+//
+//                    }
+//                }).start();
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Thread.sleep(6);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        android.os.Process.killProcess(android.os.Process.myPid());
+//                    }
+//                }).start();
+
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                    }
+//                }).start();
+                init();
+
             }
         });
 
@@ -104,8 +145,10 @@ public class MainActivity extends AppCompatActivity {
                 //MediaPlayUtil.getInstance().startPlay("/sdcard/xmbase/data/xiriAudioFiles/voice#264350515#20191113151611.pcm");
 //                MediaPlayUtil.getInstance().startPlay("/sdcard/test/file_tenggeer_response_mg.pcm");
 //                bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
-                Intent intent = new Intent("com.iflytek.testxiri59");
-                startService(intent);
+//                Intent intent = new Intent("com.iflytek.testxiri59");
+//                startService(intent);
+                handler.sendMessage(Message.obtain());
+                mainHandler.sendMessage(Message.obtain());
             }
         });
 
@@ -133,6 +176,44 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ((TextView) findViewById(R.id.ip)).setText(getLocalIpStr(this));
+
+    }
+
+    @WorkerThread
+    @NonNull
+    private void init(){
+//        Handler handler = new Handler(){
+//            @Override
+//            public void handleMessage(Message msg) {
+//                super.handleMessage(msg);
+//            }
+//        };
+        mainHandler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Log.d(TAG, "handleMessage: main");
+            }
+        };
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d(TAG, "init: Thread:"+Thread.currentThread().getName());
+                Looper.prepare();
+                handler = new Handler(){
+                    @Override
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+                        Log.d(TAG, "handleMessage: thread123");
+                    }
+                };
+                Looper.loop();
+
+                new ThreadImpl("thtest");
+
+            }
+        }).start();
 
     }
 
